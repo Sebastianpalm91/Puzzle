@@ -39,7 +39,7 @@ p {
 
 .puzzle:hover {
   transition: all 0.3s ease-in-out;
-  background-color: #073246;
+  background-color: rgba(12, 67, 93, 0.78);
 }
 
 .turn p {

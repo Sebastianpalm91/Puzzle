@@ -9,16 +9,14 @@ const resetGame = document.querySelector('button');
 const back = document.querySelectorAll('.back');
 const container = document.querySelector('.puzzleContainer');
 
-
-
-
-
+//Random numbers given to each element
 for (var i = container.children.length; i >= 0; i--) {
   container.appendChild(container.children[Math.random() * i | 0]);
 }
 
 let puzzleArray = [];
 let completed = [];
+
 // function for the callback
 let compare = (dataset, callback) => {
   if (puzzleArray.length == 2) {
@@ -37,11 +35,12 @@ let compare = (dataset, callback) => {
         puzzleArray = [];
         completed = [];
         console.log('NO');
-      },1500);
+      },1000);
     }
   }
 }
 
+//Looping through my array and reset the game
 Array.from(puzzleCard).forEach( (puzzleCard) => {
   resetGame.addEventListener('click', () => {
     puzzleCard.classList.remove('turn');
@@ -49,11 +48,8 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     for (var i = container.children.length; i >= 0; i--) {
       container.appendChild(container.children[Math.random() * i | 0]);
     }
-    return true;
     puzzleArray = [];
     completed = [];
-
-
   })
   // Creating a clickevent for the cards and calling the callback function
   puzzleCard.addEventListener('click', (e) => {
