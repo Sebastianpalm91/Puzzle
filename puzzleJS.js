@@ -8,21 +8,17 @@ const puzzleList = Array.from(puzzleCard);
 const resetGame = document.querySelector('button');
 const back = document.querySelectorAll('.back');
 const container = document.querySelector('.puzzleContainer');
-
-//Random numbers given to each element
+const divs = document.querySelectorAll('div');
+//Random numbers given to each elements data-set-'value'
 for (var i = container.children.length; i >= 0; i--) {
   container.appendChild(container.children[Math.random() * i | 0]);
 }
-
-// resetGame.addEventListener('click', () => {
-//
-// });
 
 //Creating empty Arrays
 let puzzleArray = [];
 let completed = [];
 
-// function for the callback
+// function for the callback and logic to game rules
 let compare = (dataset, callback) => {
   if (puzzleArray.length == 2) {
     if (puzzleArray[0] == puzzleArray[1]) {
@@ -43,12 +39,31 @@ let compare = (dataset, callback) => {
       },1000);
     }
   }
-}
+};
 
-//Looping through my array and reset the game
+
+// TODO: Har löst så man får ut en Array av 16st. Får även in här så en transition läggs till på nedan dock när det vänder tillbaka
+resetGame.addEventListener('click', () => {
+  // puzzleCard.classList.add('transition');
+  for (var i = 0; i < puzzleList.length; i++) {
+    Array.prototype.move = function(puzzleList, puzzleArray) {
+      var x = this[puzzleList];
+
+      this.splice(puzzleList, 1);
+      this.splice(puzzleArray,0,x);
+    }
+    const arr = [puzzleList];
+    puzzleCard.element = arr;
+    arr.move(2,1);
+    puzzleCard.element += ' ' + arr;
+    console.log(puzzleList);
+  }
+})
+
+
+//Looping through my array and if clicked -> reset the game
 Array.from(puzzleCard).forEach( (puzzleCard) => {
   resetGame.addEventListener('click', () => {
-    puzzleCard.classList.add('turn');
     puzzleCard.classList.remove('turn');
     puzzleCard.classList.remove('success');
     for (var i = container.children.length; i >= 0; i--) {
@@ -57,31 +72,6 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     puzzleArray = [];
     completed = [];
   })
-  resetGame.addEventListener('click', (e) => {
-    puzzleCard.classList.add('transition')
-    for (var i = 0; i < puzzleArray.length -16; i++) {
-      let currentLeft = puzzleArray[i].getBoundingClientRect().left
-      let currentTop = puzzleArray[i].getBoundingClientRect().top
-      let currentRight = puzzleArray[i].getBoundingClientRect().right
-      let currentBottom = puzzleArray[i].getBoundingClientRect().bottom
-
-      let nextLeft = puzzleArray[i + 1].getBoundingClientRect().left
-      let nextTop = puzzleArray[i + 1].getBoundingClientRect().top
-      let nextRight = puzzleArray[i + 1].getBoundingClientRect().right
-      let nextBottom = puzzleArray[i + 1].getBoundingClientRect().bottom
-
-      puzzleArray[i].style.left = nextLeft + 'px';
-      puzzleArray[i].style.top = nextTop + 'px';
-      puzzleArray[i].style.right = nextRight + 'px';
-      puzzleArray[i].style.bottom = nextBottom + 'px';
-
-      puzzleArray[i].style.left = currentLeft + 'px';
-      puzzleArray[i].style.top = currentTop + 'px';
-      puzzleArray[i].style.right = currentRight + 'px';
-      puzzleArray[i].style.bottom = currentBottom + 'px';
-    }
-    console.log(puzzleArray[i]);
-    })
   // Creating a clickevent for the cards and calling the callback function
   puzzleCard.addEventListener('click', (e) => {
     puzzleCard.classList.toggle('turn');
@@ -92,31 +82,32 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
   })
 })
 
+// Trying to add a shuffle function to the cards
 
 //first try shuffle
 // resetGame.addEventListener('click', () => {
-// for (var i = 0; i < puzzleList.length -1; i++) {
-//   let currentLeft = puzzleList[i].getBoundingClientRect().left
-//   let currentTop = puzzleList[i].getBoundingClientRect().top
-//   let currentRight = puzzleList[i].getBoundingClientRect().right
-//   let currentBottom = puzzleList[i].getBoundingClientRect().bottom
+// for (var i = 0; i < puzzleArray.length -16; i++) {
+//   let currentLeft = puzzleArray[i].getBoundingClientRect().left
+//   let currentTop = puzzleArray[i].getBoundingClientRect().top
+//   let currentRight = puzzleArray[i].getBoundingClientRect().right
+//   let currentBottom = puzzleArray[i].getBoundingClientRect().bottom
 //
-//   let nextLeft = puzzleList[i + 1].getBoundingClientRect().left
-//   let nextTop = puzzleList[i + 1].getBoundingClientRect().top
-//   let nextRight = puzzleList[i + 1].getBoundingClientRect().right
-//   let nextBottom = puzzleList[i + 1].getBoundingClientRect().bottom
+//   let nextLeft = puzzleArray[i + 1].getBoundingClientRect().left
+//   let nextTop = puzzleArray[i + 1].getBoundingClientRect().top
+//   let nextRight = puzzleArray[i + 1].getBoundingClientRect().right
+//   let nextBottom = puzzleArray[i + 1].getBoundingClientRect().bottom
 //
-//   puzzleList[i].style.left = nextLeft + 'px';
-//   puzzleList[i].style.top = nextTop + 'px';
-//   puzzleList[i].style.right = nextRight + 'px';
-//   puzzleList[i].style.bottom = nextBottom + 'px';
+//   puzzleArray[i].style.left = nextLeft + 'px';
+//   puzzleArray[i].style.top = nextTop + 'px';
+//   puzzleArray[i].style.right = nextRight + 'px';
+//   puzzleArray[i].style.bottom = nextBottom + 'px';
 //
-//   puzzleList[i].style.left = currentLeft + 'px';
-//   puzzleList[i].style.top = currentTop + 'px';
-//   puzzleList[i].style.right = currentRight + 'px';
-//   puzzleList[i].style.bottom = currentBottom + 'px';
-//   console.log();
+//   puzzleArray[i].style.left = currentLeft + 'px';
+//   puzzleArray[i].style.top = currentTop + 'px';
+//   puzzleArray[i].style.right = currentRight + 'px';
+//   puzzleArray[i].style.bottom = currentBottom + 'px';
 // }
+// console.log(puzzleArray[i]);
 //
 // });
 //second try shuffle

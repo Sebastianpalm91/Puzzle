@@ -15,6 +15,7 @@ body, html {
   width: 90%;
   margin: 0 auto;
   perspective: 1500px;
+  position: relative;
 }
 
 .puzzle {
@@ -24,15 +25,11 @@ body, html {
   background-color: #08415C;
   border-radius: 2%;
   position: relative;
-
+  transition: all 1s ease-in;
 }
 
 .transition {
-    transition: all 1s ease-in;
-}
-
-div {
-  transition: all 1s ease-out;
+  transition: all 3s ease-in;
 }
 
 .turn {
@@ -50,14 +47,14 @@ p {
 }*/
 
 .turn p {
-  font-size: calc(3vh + 3vw);
-  transition: 0.3s ease-in;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  font-size: calc(3.5vh + 3vw);
+  transition: 0.3s ease-in;
   margin: 0 auto;
-  margin-top: 12%;
+  margin-top: 30px;
+  margin-bottom: 30px;
   color: #EBBAB9;
 }
 
