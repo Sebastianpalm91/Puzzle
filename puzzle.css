@@ -1,0 +1,43 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.puzzle-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  perspective: 1500px;
+
+}
+
+.puzzle {
+  margin: 1%;
+  height: calc(20%);
+  width: calc(20%);
+  background-color: blue;
+}
+
+.turn {
+  background-color: black;
+  transform: rotateY(360deg);
+  transition: all 0.5s ease-in-out;
+}
+p {
+  display: none;
+}
+
+.turn p {
+  display: flex;
+  justify-content: center;
+  font-size: calc(2vh + 2vw);
+  transition: 0.3s ease-in;
+  color: white;
+  perspective: 10px;
+}
