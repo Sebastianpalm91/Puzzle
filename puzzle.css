@@ -16,12 +16,33 @@ body, html {
   perspective: 1500px;
 }
 
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+
 .puzzle {
   margin: 1%;
   height: 20%;
   width: 20%;
   background-color: #08415C;
-  border-radius: 10%;
+  border-radius: 2%;
 }
 
 .turn {
@@ -31,6 +52,11 @@ body, html {
 }
 p {
   display: none;
+}
+
+.puzzle:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: #073246;
 }
 
 .turn p {
@@ -53,13 +79,12 @@ button {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  background-color: black; /* Green */
-  border: none;
+  background-color: #EBBAB9;
+  border-style: none;
   color: white;
-  height: calc(5%);
-  width: calc(20%);
+  height: 5%;
+  width: 20%;
   text-align: center;
-  button-style: none;
   font-size: calc(1vh + 1vw);
   margin-top: 15px;
 }

@@ -33,7 +33,7 @@ let compare = (dataset, callback) => {
       console.log('NO');
       puzzleArray = [];
       completed = [];
-    },1000);
+    },1500);
     }
   }
 }
