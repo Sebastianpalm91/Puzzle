@@ -15,7 +15,6 @@ body, html {
   width: 90%;
   margin: 0 auto;
   perspective: 1500px;
-  transition: 1s ease-in;
 }
 
 .puzzle {
@@ -28,6 +27,14 @@ body, html {
 
 }
 
+.transition {
+    transition: all 1s ease-in;
+}
+
+div {
+  transition: all 1s ease-out;
+}
+
 .turn {
   background-color: #CC2936;
   transform: rotateY(360deg);
@@ -37,10 +44,10 @@ p {
   display: none;
 }
 
-.puzzle:hover {
+/*.puzzle:hover {
   transition: all 0.3s ease-in-out;
   background-color: rgba(12, 67, 93, 0.78);
-}
+}*/
 
 .turn p {
   font-size: calc(3vh + 3vw);
@@ -70,4 +77,5 @@ button {
   text-align: center;
   font-size: calc(1vh + 1vw);
   margin-top: 15px;
+  transition: 1s
 }
