@@ -11,7 +11,7 @@ const puzzleList = Array.from(puzzleCard);
 
 const puzzleArray = [];
 
-const compare = (dataset, callback) => {
+let compare = (dataset, callback) => {
   if (puzzleArray.length == 2) {
     if (puzzleArray[0] == puzzleArray[1]) {
       console.log('AYE');
@@ -23,12 +23,12 @@ const compare = (dataset, callback) => {
   }
 }
 
-
-
 Array.from(puzzleCard).forEach( (puzzleCard) => {
     puzzleCard.addEventListener('click', (e) => {
       puzzleCard.classList.toggle('turn');
       const dataset = e.target.dataset.puzzle;
-      console.log(dataset);
+      const puzzleTarget = puzzleArray.push(dataset);
+      return compare(e.target.dataset.puzzle);
+
     })
 })
