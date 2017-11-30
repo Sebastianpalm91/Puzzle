@@ -9,7 +9,7 @@ const resetGame = document.querySelector('button');
 const back = document.querySelectorAll('.back');
 const container = document.querySelector('.puzzleContainer');
 const divs = document.querySelectorAll('div');
-//Random numbers given to each elements data-set-'value'
+//Random numbers given to each elements data-set-'value' befor start
 for (var i = container.children.length; i >= 0; i--) {
   container.appendChild(container.children[Math.random() * i | 0]);
 }
@@ -81,6 +81,15 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     return compare(e.target.dataset.puzzle);
   })
 })
+
+
+
+
+
+
+
+
+
 
 // Trying to add a shuffle function to the cards
 

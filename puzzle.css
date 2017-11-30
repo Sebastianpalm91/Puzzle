@@ -28,9 +28,9 @@ body, html {
   transition: all 1s ease-in;
 }
 
-.transition {
+/*.transition {
   transition: all 3s ease-in;
-}
+}*/
 
 .turn {
   background-color: #CC2936;
