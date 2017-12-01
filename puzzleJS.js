@@ -43,22 +43,6 @@ let compare = (dataset, callback) => {
 
 
 // TODO: Har löst så man får ut en Array av 16st. Får även in här så en transition läggs till på nedan dock när det vänder tillbaka
-resetGame.addEventListener('click', () => {
-  // puzzleCard.classList.add('transition');
-  for (var i = 0; i < puzzleList.length; i++) {
-    Array.prototype.move = function(puzzleList, puzzleArray) {
-      var x = this[puzzleList];
-
-      this.splice(puzzleList, 1);
-      this.splice(puzzleArray,0,x);
-    }
-    const arr = [puzzleList];
-    puzzleCard.element = arr;
-    arr.move(2,1);
-    puzzleCard.element += ' ' + arr;
-    console.log(puzzleList);
-  }
-})
 
 
 //Looping through my array and if clicked -> reset the game
@@ -71,6 +55,29 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     }
     puzzleArray = [];
     completed = [];
+  })
+  //Shuffle the cards in a random direction and back
+  resetGame.addEventListener('click', () => {
+    setTimeout(function() {
+      for (cards of puzzleList) {
+        let random = Math.random() * -20 * 20 + 'px';
+        let random2 = Math.random() * 30 * 30 + 'px';
+        let random3 = Math.random() * 20 * -30 + 'px';
+        let randomDeg = Math.random() * 500 + 'deg'
+        cards.style.transition = "all 1s ease";
+        console.log(random);
+        cards.style.transform = `translateZ(${random3, random, random2}) translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
+
+      }
+    }, 100);
+    setTimeout(function(){
+      for (cards of puzzleList) {
+        let random2 = Math.random() * 0 + 'px';
+        cards.style.transition = "all 1s ease";
+        cards.style.transform = `translateY(${random2}) translateX(${random2})`;
+        console.log(random2);
+      }
+    }, 1000);
   })
   // Creating a clickevent for the cards and calling the callback function
   puzzleCard.addEventListener('click', (e) => {
@@ -90,6 +97,23 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
 
 
 
+
+// resetGame.addEventListener('click', () => {
+//   // puzzleCard.classList.add('transition');
+//   for (var i = 0; i < puzzleList.length; i++) {
+//     Array.prototype.move = function(puzzleList, puzzleArray) {
+//       var x = this[puzzleList];
+//
+//       this.splice(puzzleList, 1);
+//       this.splice(puzzleArray,0,x);
+//     }
+//     const arr = [puzzleList];
+//     puzzleCard.element = arr;
+//     arr.move(2,1);
+//     puzzleCard.element += ' ' + arr;
+//   }
+//   console.log(puzzleList);
+// })
 
 // Trying to add a shuffle function to the cards
 
