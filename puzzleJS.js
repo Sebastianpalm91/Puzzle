@@ -41,10 +41,6 @@ let compare = (dataset, callback) => {
   }
 };
 
-
-// TODO: Har löst så man får ut en Array av 16st. Får även in här så en transition läggs till på nedan dock när det vänder tillbaka
-
-
 //Looping through my array and if clicked -> reset the game
 Array.from(puzzleCard).forEach( (puzzleCard) => {
   resetGame.addEventListener('click', () => {
@@ -70,6 +66,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
 
       }
     }, 100);
+    //Moves the cards back to original position
     setTimeout(function(){
       for (cards of puzzleList) {
         let random2 = Math.random() * 0 + 'px';
