@@ -60,7 +60,6 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
         let random2 = Math.random() * 30 * 80 + 'px';
         let random3 = Math.random() * 20 * -100 + 'px';
         let randomDeg = Math.random() * 1500 + 'deg';
-        console.log(random);
         cards.style.transform = `translateZ(${random3, random, random2}) translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
         cards.style.transition = "all 1s ease";
       }
@@ -71,7 +70,6 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
         let random2 = Math.random() * 0 + 'px';
         cards.style.transition = "all 2s ease";
         cards.style.transform = `translateY(${random2}) translateX(${random2})`;
-        console.log(random2);
       }
     }, 1000);
   })
@@ -81,6 +79,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     const dataset = e.target.dataset.puzzle;
     const puzzleTarget = puzzleArray.push(dataset);
     completed.push(puzzleCard);
+    console.log(e.target.dataset.puzzle);
     return compare(e.target.dataset.puzzle);
   })
 })
