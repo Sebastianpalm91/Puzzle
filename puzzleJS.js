@@ -79,6 +79,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
         let randomDeg = Math.random() * 1500 + 'deg';
         cards.style.transition = "all 1s ease";
         cards.style.transform = `translateZ(${random3, random, random2}) translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
+
       }
     }, 100);
     //Moves the cards back to original position

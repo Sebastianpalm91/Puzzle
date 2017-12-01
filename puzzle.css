@@ -29,10 +29,12 @@ body, html {
   background-color: #08415C;
   border-radius: 10px;
   position: relative;
+  transition: all 0.3s ease-in-out;
 }
-/*.transition {
-  transition: all 3s ease-in;
-}*/
+.transition {
+  transform: rotateY(360deg) rotateX(360deg);
+  transition: all 0.5s ease-in-out;
+}
 
 .turn {
   background-color: #CC2936;
@@ -42,11 +44,6 @@ body, html {
 p {
   display: none;
 }
-/*
-.puzzle:hover {
-  transition: all 0.3s ease-in-out;
-  background-color: rgba(12, 67, 93, 0.78);
-}*/
 
 .turn p {
   display: flex;
