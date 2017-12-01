@@ -59,6 +59,17 @@ p {
   color: #EBBAB9;
 }
 
+.cardSucces {
+  background-color: #EBBAB9
+  color: #08415C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(4.5vh + 4vw);
+  height: 20%;
+  width: 20%;
+}
+
 .success {
   background-color: #B5FFE1;
 }

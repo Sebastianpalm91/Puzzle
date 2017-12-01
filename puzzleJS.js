@@ -22,7 +22,6 @@ let completed = [];
 let compare = (dataset, callback) => {
   if (puzzleArray.length == 2) {
     if (puzzleArray[0] == puzzleArray[1]) {
-      console.log('AYE');
       completed[0].classList.add('success')
       completed[1].classList.add('success')
       puzzleArray = [];
@@ -35,8 +34,13 @@ let compare = (dataset, callback) => {
         completed[1].classList.remove('turn')
         puzzleArray = [];
         completed = [];
-        console.log('NO');
       },1000);
+    }
+  }
+  if (completed.length == 8) {
+    if (puzzleArray[0] == puzzleArray[1]) {
+      completed[8].classList.add('countSucces')
+      console.log(completed);
     }
   }
 };
@@ -79,7 +83,6 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     const dataset = e.target.dataset.puzzle;
     const puzzleTarget = puzzleArray.push(dataset);
     completed.push(puzzleCard);
-    console.log(e.target.dataset.puzzle);
     return compare(e.target.dataset.puzzle);
   })
 })
