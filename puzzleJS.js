@@ -52,18 +52,17 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     puzzleArray = [];
     completed = [];
   })
-  //Shuffle the cards in a random direction and back
+  //Shuffle the cards in a random direction
   resetGame.addEventListener('click', () => {
     setTimeout(function() {
       for (cards of puzzleList) {
-        let random = Math.random() * -20 * 20 + 'px';
-        let random2 = Math.random() * 30 * 30 + 'px';
-        let random3 = Math.random() * 20 * -30 + 'px';
-        let randomDeg = Math.random() * 500 + 'deg'
-        cards.style.transition = "all 1s ease";
+        let random = Math.random() * -10 * 20 + 'px';
+        let random2 = Math.random() * 30 * 80 + 'px';
+        let random3 = Math.random() * 20 * -100 + 'px';
+        let randomDeg = Math.random() * 1500 + 'deg';
         console.log(random);
         cards.style.transform = `translateZ(${random3, random, random2}) translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
-
+        cards.style.transition = "all 1s ease";
       }
     }, 100);
     //Moves the cards back to original position
