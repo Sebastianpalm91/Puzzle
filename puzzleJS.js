@@ -69,7 +69,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     setTimeout(function(){
       for (cards of puzzleList) {
         let random2 = Math.random() * 0 + 'px';
-        cards.style.transition = "all 1s ease";
+        cards.style.transition = "all 2s ease";
         cards.style.transform = `translateY(${random2}) translateX(${random2})`;
         console.log(random2);
       }
