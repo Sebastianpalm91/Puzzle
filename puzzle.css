@@ -8,7 +8,7 @@ body, html {
 
 .puzzleContainer {
   display: flex;
-  flex-flow: wrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   height: 80%;
@@ -17,7 +17,9 @@ body, html {
   margin: 0 auto;
   perspective: 1000px;
   position: relative;
-  border: 2px solid black;
+  border: 5px solid #EBBAB9;
+  border-style: dashed;
+  cursor: pointer;
 }
 
 .puzzle {
@@ -28,21 +30,20 @@ body, html {
   border-radius: 10px;
   position: relative;
 }
-
 /*.transition {
   transition: all 3s ease-in;
 }*/
 
 .turn {
   background-color: #CC2936;
-  transform: rotateY(360deg);
+  transform: rotateY(360deg) rotateX(360deg);
   transition: all 0.5s ease-in-out;
 }
 p {
   display: none;
 }
-
-/*.puzzle:hover {
+/*
+.puzzle:hover {
   transition: all 0.3s ease-in-out;
   background-color: rgba(12, 67, 93, 0.78);
 }*/
@@ -59,15 +60,17 @@ p {
   color: #EBBAB9;
 }
 
-.cardSucces {
-  background-color: #EBBAB9
+.cardSucces h1{
+  background-color: #EBBAB9;
   color: #08415C;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  top: 40%;
+  left: 35%;
+  position: absolute;
   font-size: calc(4.5vh + 4vw);
+  text-align: center;
   height: 20%;
-  width: 20%;
+  width: 30%;
 }
 
 .success {
@@ -75,16 +78,28 @@ p {
 }
 
 button {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   margin: 0 auto;
   background-color: #EBBAB9;
-  border-style: none;
+  border-color: white;
   color: white;
   height: 5%;
   width: 20%;
   text-align: center;
+  text-decoration: underline;
   font-size: calc(1vh + 1vw);
-  margin-top: 3%;
-  transition: 1s
+  margin-top: 1%;
+  outline-color: inherit;
+  transition: 0.2s ease-in;
+}
+
+button:active {
+  outline-color: inherit;
+}
+
+button:hover {
+  background-color: #b48887;
+  color: #08415C;
 }

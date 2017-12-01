@@ -2,23 +2,26 @@
 //       2, Make each puzzleCard get a random position
 //       3, Make each PuzzleCard get a random number
 //       4, Make a resetButton and give it a random number
+//       5, Make a visually displayed shuffle function
 
+//Declaring my variables
 const puzzleCard = document.querySelectorAll('.puzzle');
-const puzzleList = Array.from(puzzleCard);
+const cardSuccesBox = document.querySelector('.cardSucces');
 const resetGame = document.querySelector('button');
 const back = document.querySelectorAll('.back');
 const container = document.querySelector('.puzzleContainer');
-const divs = document.querySelectorAll('div');
+const puzzleList = Array.from(puzzleCard);
 //Random numbers given to each elements data-set-'value' befor start
 for (var i = container.children.length; i >= 0; i--) {
   container.appendChild(container.children[Math.random() * i | 0]);
 }
 
-//Creating empty Arrays
+//Creating empty Arrays and a scorecounter
 let puzzleArray = [];
 let completed = [];
+let cardSucces = 0;
 
-// function for the callback and logic to game rules
+// function for the callback, score counter and logic to game rules
 let compare = (dataset, callback) => {
   if (puzzleArray.length == 2) {
     if (puzzleArray[0] == puzzleArray[1]) {
@@ -26,6 +29,12 @@ let compare = (dataset, callback) => {
       completed[1].classList.add('success')
       puzzleArray = [];
       completed = [];
+      cardSucces++;
+      if (cardSucces === 8) {
+        setTimeout(function() {
+           cardSuccesBox.classList.add('cardSucces');
+        }, 1000);
+      }
     } else {
       setTimeout(function(){
         completed[1].classList.remove('turn')
@@ -37,16 +46,20 @@ let compare = (dataset, callback) => {
       },1000);
     }
   }
-  if (completed.length == 8) {
-    if (puzzleArray[0] == puzzleArray[1]) {
-      completed[8].classList.add('countSucces')
-      console.log(completed);
-    }
-  }
 };
 
-//Looping through my array and if clicked -> reset the game
+//Looping through my array
 Array.from(puzzleCard).forEach( (puzzleCard) => {
+  // Creating a clickevent for the cards and calling the callback function
+  puzzleCard.addEventListener('click', (e) => {
+    puzzleCard.classList.toggle('turn');
+    const dataset = e.target.dataset.puzzle;
+    const puzzleTarget = puzzleArray.push(dataset);
+    completed.push(puzzleCard);
+    return compare(e.target.dataset.puzzle);
+  })
+
+  //Resetting the game and shuffle the cards
   resetGame.addEventListener('click', () => {
     puzzleCard.classList.remove('turn');
     puzzleCard.classList.remove('success');
@@ -55,17 +68,17 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     }
     puzzleArray = [];
     completed = [];
-  })
-  //Shuffle the cards in a random direction
-  resetGame.addEventListener('click', () => {
+    cardSucces = 0;
+
+    //Shuffle the cards in a random direction when clicked on button
     setTimeout(function() {
       for (cards of puzzleList) {
         let random = Math.random() * -10 * 20 + 'px';
         let random2 = Math.random() * 30 * 80 + 'px';
         let random3 = Math.random() * 20 * -100 + 'px';
         let randomDeg = Math.random() * 1500 + 'deg';
-        cards.style.transform = `translateZ(${random3, random, random2}) translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
         cards.style.transition = "all 1s ease";
+        cards.style.transform = `translateZ(${random3, random, random2}) translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
       }
     }, 100);
     //Moves the cards back to original position
@@ -76,14 +89,6 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
         cards.style.transform = `translateY(${random2}) translateX(${random2})`;
       }
     }, 1000);
-  })
-  // Creating a clickevent for the cards and calling the callback function
-  puzzleCard.addEventListener('click', (e) => {
-    puzzleCard.classList.toggle('turn');
-    const dataset = e.target.dataset.puzzle;
-    const puzzleTarget = puzzleArray.push(dataset);
-    completed.push(puzzleCard);
-    return compare(e.target.dataset.puzzle);
   })
 })
 
