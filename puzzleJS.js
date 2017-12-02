@@ -8,8 +8,8 @@
 const puzzleCard = document.querySelectorAll('.puzzle');
 const cardSuccesBox = document.querySelector('.cardSucces');
 const resetGame = document.querySelector('button');
-const back = document.querySelectorAll('.back');
 const container = document.querySelector('.puzzleContainer');
+const boxShadow = document.querySelectorAll('boxShadow');
 const puzzleList = Array.from(puzzleCard);
 //Random numbers given to each elements data-set-'value' befor start
 for (var i = container.children.length; i >= 0; i--) {
@@ -47,7 +47,6 @@ let compare = (dataset, callback) => {
     }
   }
 };
-
 //Looping through my array
 Array.from(puzzleCard).forEach( (puzzleCard) => {
   // Creating a clickevent for the cards and calling the callback function
@@ -62,6 +61,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
   resetGame.addEventListener('click', () => {
     puzzleCard.classList.remove('turn');
     puzzleCard.classList.remove('success');
+    puzzleCard.classList.remove('boxShadow');
     for (var i = container.children.length; i >= 0; i--) {
       container.appendChild(container.children[Math.random() * i | 0]);
     }
@@ -86,6 +86,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
         let random2 = Math.random() * 0 + 'px';
         cards.style.transform = `translateY(${random2}) translateX(${random2})`;
         cards.removeAttribute('style');
+        puzzleCard.classList.add('boxShadow');
       }
     }, 1800);
   })

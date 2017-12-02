@@ -30,7 +30,14 @@ body, html {
   border-radius: 10px;
   position: relative;
   transition: all 0.3s ease-in-out;
+  transform-style: preserve-3d;
+
 }
+
+.boxShadow {
+  box-shadow: 3px 3px 3px #4f4f4f;
+}
+
 .transition {
   transform: rotateY(360deg) rotateX(360deg);
   transition: all 0.5s ease-in-out;
@@ -38,8 +45,8 @@ body, html {
 
 .turn {
   background-color: #CC2936;
-  transform: rotateY(360deg) rotateX(360deg);
-  transition: all 0.5s ease-in-out;
+  transform: rotateY(360deg) rotateX(360deg) translateZ(50px);
+  transition: all 0.8s ease-in-out;
 }
 p {
   display: none;
@@ -55,6 +62,8 @@ p {
   margin-top: 25px;
   margin-bottom: 20px;
   color: #EBBAB9;
+  transform-style: preserve-3d;
+  transform: translateZ(20px);
 }
 
 .cardSucces h1{
