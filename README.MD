@@ -34,6 +34,15 @@ The repository must contain a .editorconfig file with your preferred settings.<b
 </li>
 </ul>
 
+## Structures
+<p>The layout and design is built in HTML and CSS. Logic, rules and events are made in Javascript</p>
+
 ## How to install
 
-<p>Download the repository and unzip it on in chosen location. Open the directory and click in the puzzle.html file. It should open up in your browser if not, right-click on the file and open with-> "your browser". All set. Happy playing :)</p>
+<p>Download the repository and unzip it on in chosen location. Open the directory and click on the puzzle.html file. It should open up in your browser if not, right-click on the file and open with-> "your browser". All set. Happy playing :)</p>
+
+### Testing done by:
+
+-> Christopher Mattsson
+-> Gabriel Aanesen
+-> Andreas Lundqvist
