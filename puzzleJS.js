@@ -58,7 +58,6 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     completed.push(puzzleCard);
     return compare(e.target.dataset.puzzle);
   })
-
   //Resetting the game and shuffle the cards
   resetGame.addEventListener('click', () => {
     puzzleCard.classList.remove('turn');
@@ -69,27 +68,26 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     puzzleArray = [];
     completed = [];
     cardSucces = 0;
-
     //Shuffle the cards in a random direction when clicked on button
     setTimeout(function() {
       for (cards of puzzleList) {
         let random = Math.random() * -10 * 20 + 'px';
-        let random2 = Math.random() * 30 * 80 + 'px';
+        let random2 = Math.random() * -30 * -80 + 'px';
         let random3 = Math.random() * 20 * -100 + 'px';
         let randomDeg = Math.random() * 1500 + 'deg';
-        cards.style.transition = "all 1s ease";
-        cards.style.transform = `translateZ(${random3, random, random2}) translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
-
+        cards.style.transition = "all 1.5s ease";
+        cards.style.transform = `translateZ(${random3, random, random2})
+        translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
       }
     }, 100);
     //Moves the cards back to original position
     setTimeout(function(){
       for (cards of puzzleList) {
         let random2 = Math.random() * 0 + 'px';
-        cards.style.transition = "all 2s ease";
         cards.style.transform = `translateY(${random2}) translateX(${random2})`;
+        cards.removeAttribute('style');
       }
-    }, 1000);
+    }, 1800);
   })
 })
 
