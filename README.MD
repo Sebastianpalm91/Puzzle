@@ -5,29 +5,35 @@
 <ul>
 <li>
 There should be at least 8 pairs and a maximum of 10 pairs.<br>
-
+</li>
+<li>
 The pairs should be randomly positioned before a new game starts.<br>
-
+</li>
+<li>
 The project should implement nice graphical user interface.<br>
-
+</li>
+<li>
 There should be a replay button to restart the game when finished.<br>
-
+</li>
+<li>
 The project should look, feel and work similarly in Google Chrome and Firefox.<br>
-
+</li>
+<li>
 The project can't contain any errors, warning or notices in the developer console.<br>
-
+</li>
+<li>
 The project should be written in HTML, CSS and JavaScript.<br>
-
+<li>
 The project can't use any third-party frameworks such as jQuery.<br>
-
+<li>
 The project must be tested on at least two of your classmates computers.<br>
-
+<li>
 The repository should have at least 20 commits and not just one big commit.<br>
-
+<li>
 The repository must contain a README.md file with installation instructions and documentation.<br>
-
+<li>
 The repository must contain a LICENSE file.<br>
-
+<li>
 The repository must contain a .editorconfig file with your preferred settings.<br>
 </li>
 </ul>
