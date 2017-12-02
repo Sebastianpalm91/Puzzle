@@ -43,6 +43,6 @@ The repository must contain a .editorconfig file with your preferred settings.<b
 
 ### Testing done by:
 
--> Christopher Mattsson
--> Gabriel Aanesen
--> Andreas Lundqvist
+-> Christopher Mattsson<br>
+-> Gabriel Aanesen<br>
+-> Andreas Lundqvist<br>
