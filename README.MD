@@ -1,3 +1,5 @@
+<img src="https://media.giphy.com/media/FPjbHO0jJxGsE/giphy.gif" alt="funnyMemory" height="100%" width="100%">
+
 # Fuzzle Puzzle Memory Game
 
 ## Puzzle-Project with Javascript
@@ -31,3 +33,7 @@ The repository must contain a LICENSE file.<br>
 The repository must contain a .editorconfig file with your preferred settings.<br>
 </li>
 </ul>
+
+## How to install
+
+<p>Download the repository and unzip it on in chosen location. Open the directory and click in the puzzle.html file. It should open up in your browser if not, right-click on the file and open with-> "your browser". All set. Happy playing :)</p>
