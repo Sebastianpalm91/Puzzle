@@ -129,6 +129,13 @@ h1 {
   pointer-events: none;
 }
 
+.timer {
+  display: flex;
+  justify-content: center;
+  margin-top: -25px;
+  font-size: calc(2vh + 2vw);
+}
+
 button {
   cursor: pointer;
   display: flex;
