@@ -10,13 +10,16 @@
 const puzzleCard = document.querySelectorAll('.puzzle');
 const cardSuccesBox = document.querySelector('.cardSucces');
 const resetGame = document.querySelector('button');
+const bounce = document.querySelector('.bounce');
 const container = document.querySelector('.puzzleContainer');
 const boxShadow = document.querySelectorAll('boxShadow');
+const startTimer = document.querySelector('.startTimer')
 const puzzleList = Array.from(puzzleCard);
 // Clock timer
 var h2 = document.getElementsByTagName('h2')[0],
     seconds = 0, minutes = 0, hours = 0,
     t;
+
 
 //Random numbers given to each elements data-set-'value' befor start
 for (var i = container.children.length; i >= 0; i--) {
@@ -44,6 +47,8 @@ let compare = (dataset, callback) => {
       if (cardSucces === 8) {
         setTimeout(function() {
            cardSuccesBox.style.display = "block";
+           seconds = 0; minutes = 0; hours = 0;
+           clearTimeout(t);
         }, 1000);
       }
     }
@@ -64,25 +69,31 @@ let compare = (dataset, callback) => {
       completed[2].classList.remove('turn')
   }
 };
+startTimer.addEventListener('click', () => {
+startTimer.classList.remove('bounce')
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+    }
+    h2.textContent = (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+timer();
+startTimer.onclick = timer;
+console.log(timer);
+})
 //Looping through my array
+startTimer.classList.remove('bounce')
 Array.from(puzzleCard).forEach( (puzzleCard) => {
     puzzleCard.classList.add('boxShadow');
   // Creating a clickevent for the cards and calling the callback function
   puzzleCard.addEventListener('click', (e) => {
     puzzleCard.classList.toggle('turn');
-    function add() {
-        seconds++;
-        if (seconds >= 60) {
-            seconds = 0;
-            minutes++;
-        }
-        h2.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-        timer();
-    }
-    function timer() {
-        t = setTimeout(add, 1000);
-    }
-    timer();
 
     // starttimer = "true";
 	// 	timer();
@@ -98,6 +109,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     h2.textContent = "00:00:00";
     seconds = 0; minutes = 0; hours = 0;
     clearTimeout(t);
+    bounce.classList.remove('bounce');
     puzzleCard.classList.remove('turn');
     puzzleCard.classList.remove('success');
     puzzleCard.classList.remove('boxShadow');
@@ -128,6 +140,7 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
         cards.style.transform = `translateY(${random2}) translateX(${random2})`;
         cards.removeAttribute('style');
         puzzleCard.classList.add('boxShadow');
+        startTimer.classList.add('bounce')
       }
     }, 1800);
   })

@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styling/puzzle.css">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <title>Puzzle Memory Game</title>
-  </head>
-  <body>
-  <button type="button" name="button">Shuffle the cards</button>
-    <div class="puzzleContainer">
-      <div class="puzzle first" data-puzzle="1"><p>1</p></div>
-      <div class="puzzle first" data-puzzle="1"><p>1</p></div>
-      <div class="puzzle first" data-puzzle="2"><p>2</p></div>
-      <div class="puzzle first" data-puzzle="2"><p>2</p></div>
-      <div class="puzzle second" data-puzzle="3"><p>3</p></div>
-      <div class="puzzle second" data-puzzle="3"><p>3</p></div>
-      <div class="puzzle second" data-puzzle="4"><p>4</p></div>
-      <div class="puzzle second" data-puzzle="4"><p>4</p></div>
-      <div class="puzzle third" data-puzzle="5"><p>5</p></div>
-      <div class="puzzle third" data-puzzle="5"><p>5</p></div>
-      <div class="puzzle third" data-puzzle="6"><p>6</p></div>
-      <div class="puzzle third" data-puzzle="6"><p>6</p></div>
-      <div class="puzzle fourth" data-puzzle="7"><p>7</p></div>
-      <div class="puzzle fourth" data-puzzle="7"><p>7</p></div>
-      <div class="puzzle fourth" data-puzzle="8"><p>8</p></div>
-      <div class="puzzle fourth" data-puzzle="8"><p>8</p></div>
-    </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./styling/puzzle.css">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <title>Puzzle Memory Game</title>
+</head>
+<body>
+  <div class="bottom">
 
-    <div class="timer"><h2><time>00:00:00</time></h2></div>
-    <div class="cardSucces bounce animated"><h1>Congratz! You Won. Click above to restart</h1></div>
-  </body>
-  <script type="text/javascript" src="./script/puzzleJS.js"></script>
+    <div class="timer"><h2><time>00:00</time></h2></div>
+    <button class="bounce animated" type="button" name="button">Shuffle the cards</button>
+    <button class="startTimer bounce animated" type="button">Start</button>
+  </div>
+  <div class="puzzleContainer">
+    <div class="puzzle first" data-puzzle="1"><p>1</p></div>
+    <div class="puzzle first" data-puzzle="1"><p>1</p></div>
+    <div class="puzzle first" data-puzzle="2"><p>2</p></div>
+    <div class="puzzle first" data-puzzle="2"><p>2</p></div>
+    <div class="puzzle second" data-puzzle="3"><p>3</p></div>
+    <div class="puzzle second" data-puzzle="3"><p>3</p></div>
+    <div class="puzzle second" data-puzzle="4"><p>4</p></div>
+    <div class="puzzle second" data-puzzle="4"><p>4</p></div>
+    <div class="puzzle third" data-puzzle="5"><p>5</p></div>
+    <div class="puzzle third" data-puzzle="5"><p>5</p></div>
+    <div class="puzzle third" data-puzzle="6"><p>6</p></div>
+    <div class="puzzle third" data-puzzle="6"><p>6</p></div>
+    <div class="puzzle fourth" data-puzzle="7"><p>7</p></div>
+    <div class="puzzle fourth" data-puzzle="7"><p>7</p></div>
+    <div class="puzzle fourth" data-puzzle="8"><p>8</p></div>
+    <div class="puzzle fourth" data-puzzle="8"><p>8</p></div>
+  </div>
+  <div class="cardSucces bounce animated"><h1>Congratz! You Won. Click above to restart</h1></div>
+</body>
+<script type="text/javascript" src="./script/puzzleJS.js"></script>
 </html>
