@@ -16,6 +16,7 @@ for (var i = container.children.length; i >= 0; i--) {
   container.appendChild(container.children[Math.random() * i | 0]);
 }
 
+
 //Creating empty Arrays and a scorecounter
 let puzzleArray = [];
 let completed = [];
@@ -30,9 +31,10 @@ let compare = (dataset, callback) => {
       puzzleArray = [];
       completed = [];
       cardSucces++;
+      console.log(cardSucces);
       if (cardSucces === 8) {
         setTimeout(function() {
-           cardSuccesBox.classList.add('cardSucces');
+           cardSuccesBox.style.display = "block";
         }, 1000);
       }
     } else {
@@ -55,13 +57,17 @@ Array.from(puzzleCard).forEach( (puzzleCard) => {
     const dataset = e.target.dataset.puzzle;
     const puzzleTarget = puzzleArray.push(dataset);
     completed.push(puzzleCard);
+    puzzleCard.classList.add('boxShadow');
     return compare(e.target.dataset.puzzle);
   })
   //Resetting the game and shuffle the cards
+
   resetGame.addEventListener('click', () => {
     puzzleCard.classList.remove('turn');
     puzzleCard.classList.remove('success');
     puzzleCard.classList.remove('boxShadow');
+    cardSuccesBox.style.display = "none";
+    // cardSuccesBox.style.display = "none";
     for (var i = container.children.length; i >= 0; i--) {
       container.appendChild(container.children[Math.random() * i | 0]);
     }
