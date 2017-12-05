@@ -4,6 +4,7 @@ body, html {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: rgb(10, 10, 10);
 }
 * {
   font-family: 'Indie Flower', cursive;
@@ -26,16 +27,19 @@ body, html {
   margin: 0 auto;
   perspective: 1000px;
   position: relative;
-  border: 5px solid #EBBAB9;
+  border: 5px solid #8b0509;
   border-style: dashed;
   cursor: pointer;
 }
 
 .puzzle {
-  margin: 1%;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/38/Stranger_Things_logo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 20%;
   width: 20%;
-  background-color: #08415C;
+  margin: 1%;
   border-radius: 10px;
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -44,7 +48,7 @@ body, html {
 }
 
 .boxShadow {
-  box-shadow: 3px 3px 3px #4f4f4f;
+  box-shadow: 3px 3px 3px #1d1d1d;
 }
 
 .transition {
@@ -53,42 +57,48 @@ body, html {
 }
 
 .turn {
-  background-color: #CC2936;
   transform: rotateY(360deg) rotateX(360deg) translateZ(50px);
   transition: all 0.8s ease-in-out;
   pointer-events: none;
 }
-p {
+img {
   display: none;
+  margin: 0;
+  border-radius: 10px;
+  background-size: contain;
 }
 
-.turn p {
+.pointer-stop {
+  pointer-events: none;
+}
+
+.turn img {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: calc(3.5vh + 3vw);
   transition: 0.3s ease-in;
   margin: 0 auto;
-  margin-top: 25px;
-  margin-bottom: 20px;
-  color: #EBBAB9;
-  transform-style: preserve-3d;
-  transform: translateZ(20px);
+  height: 100%;
+  width: 100%;
+  color: #8b0509;
+  /*transform-style: preserve-3d;
+  transform: translateZ(20px);*/
 }
 
 h1 {
   font-size: calc(2vh + 2vw);
-  padding-top: 30px;
+  padding-top: 20px;
   display: inline-flex;
   color: white;
 }
 
 
 .cardSucces {
-  background-color: #EBBAB9;
+  background-color: rgba(139, 5, 9, 0.83);
   color: #08415C;
   margin: 0 auto;
-  top: 37%;
+  top: 15%;
   left: 35%;
   position: absolute;
   text-align: center;
@@ -106,16 +116,16 @@ h1 {
 
   40%, 43% {
     animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -10px, 0);
   }
 
   70% {
     animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -5px, 0);
   }
 
   90% {
-    transform: translate3d(0,-4px,0);
+    transform: translate3d(0,-2px,0);
   }
 }
 .bounce {
@@ -123,9 +133,26 @@ h1 {
   transform-origin: center bottom;
   animation-iteration-count: infinite;
 }
+.highScore {
+  background-color: rgba(139, 5, 9, 0.82);
+  border-color: white;
+  color: white;
+  text-align: center;
+  position: absolute;
+  border-radius: 10px;
+  top: 45%;
+  left: 40%;
+  right: 40%;
+  height: 45%;
+  width: 20%;
+  display: none;
+}
+li {
+  list-style: decimal;
+}
+/* TODO: ADD SHUFFLE SO IT MADE CLICKABLE */
 
 .success {
-  background-color: #B5FFE1;
   pointer-events: none;
 }
 
@@ -141,7 +168,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  background-color: #EBBAB9;
+  background-color: #8b0509;
   border-color: white;
   color: white;
   height: 20%;
@@ -158,7 +185,7 @@ h2 {
   margin: 0 auto;
   font-size: calc(1vh + 1vw);
   color: white;
-  background-color: #EBBAB9;
+  background-color: #8b0509;
 }
 
 button {
@@ -166,8 +193,8 @@ button {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  background-color: #EBBAB9;
-  border-color: white;
+  background-color: rgba(139, 5, 9, 0.83);
+  border-color: black;
   color: white;
   height: 5%;
   width: 20%;
@@ -183,7 +210,39 @@ button:active {
   outline-color: inherit;
 }
 
-button:hover {
-  background-color: #b48887;
-  color: #08415C;
+/*SNOW EFFECT*/
+.snow{
+	background: none;
+	font-family: Androgyne;
+	background-image: url('http://www.wearewebstars.dk/codepen/img/s1.png'), url('http://www.wearewebstars.dk/codepen/img//s2.png'), url('http://www.wearewebstars.dk/codepen/img//s3.png');
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index:0 ;
+	-webkit-animation: snow 10s linear infinite;
+	-moz-animation: snow 10s linear infinite;
+	-ms-animation: snow 10s linear infinite;
+	animation: snow 20s linear infinite;
+}
+@keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+@-moz-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 400px 1000px, 200px 400px, 100px 300px;}
+}
+@-webkit-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+@-ms-keyframes snow {
+  0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+  50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+  100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
 }

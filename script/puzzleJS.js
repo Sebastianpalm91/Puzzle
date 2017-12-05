@@ -14,16 +14,20 @@ const bounce = document.querySelector('.bounce');
 const container = document.querySelector('.puzzleContainer');
 const boxShadow = document.querySelectorAll('boxShadow');
 const startTimer = document.querySelector('.startTimer')
+const highScore = document.querySelector('.highScore');
+const animated = document.querySelectorAll('.animated');
+const shuffle = document.querySelector('.shuffle');
+const scoreList = document.querySelector('li');
 const puzzleList = Array.from(puzzleCard);
 // Clock timer
-var h2 = document.getElementsByTagName('h2')[0],
-    seconds = 0, minutes = 0, hours = 0,
-    t;
+var time = document.getElementsByTagName('h2')[0],
+seconds = 0, minutes = 0,
+t;
 
 
 //Random numbers given to each elements data-set-'value' befor start
 for (var i = container.children.length; i >= 0; i--) {
-  container.appendChild(container.children[Math.random() * i | 0]);
+    container.appendChild(container.children[Math.random() * i | 0]);
 }
 
 
@@ -32,122 +36,142 @@ for (var i = container.children.length; i >= 0; i--) {
 let puzzleArray = [];
 let completed = [];
 let cardSucces = 0;
+let timerScore = [];
 
 // function for the callback, score counter and logic to game rules
 let compare = (dataset, callback) => {
-  if (puzzleArray.length == 2) {
-    if (puzzleArray[0] == puzzleArray[1]) {
-      completed[0].classList.add('success')
-      completed[1].classList.add('success')
-      puzzleArray = [];
-      completed = [];
-      cardSucces++;
-      console.log(cardSucces);
-      //IF all cards completed, display the winning box
-      if (cardSucces === 8) {
-        setTimeout(function() {
-           cardSuccesBox.style.display = "block";
-           seconds = 0; minutes = 0; hours = 0;
-           clearTimeout(t);
-        }, 1000);
-      }
+    if (puzzleArray.length == 2) {
+        function pause() {
+            if (puzzleArray.length == 2)
+            container.classList.add('pointer-stop');
+            setTimeout(function () {
+                container.classList.remove('pointer-stop');
+            }, 1000)
+
+        }
+        pause();
+        if (puzzleArray[0] == puzzleArray[1]) {
+            completed[0].classList.add('success')
+            completed[1].classList.add('success')
+            puzzleArray = [];
+            completed = [];
+            cardSucces++;
+            console.log(cardSucces);
+            //IF all cards completed, display the winning box
+            if (cardSucces === 1) {
+                // console.log(stopTime);
+                const stopTime = time.textContent;
+                var node = document.createElement('li');
+                const textnode = document.createTextNode(stopTime);
+                node.appendChild(textnode);
+                document.querySelector('.scoreList').appendChild(node);
+                highScore.style.display = "block";
+                seconds = 0; minutes = 0;
+                clearTimeout(t);
+                setTimeout(function() {
+                    cardSuccesBox.style.display = "block";
+                }, 1000);
+            }
+        }
+        else {
+            setTimeout(function(){
+                completed[1].classList.remove('turn')
+                completed[1].classList.remove('turn')
+                completed[0].classList.remove('turn')
+                completed[0].classList.remove('turn')
+                puzzleArray = [];
+                completed = [];
+            },1000);
+        }
     }
-    else {
-      setTimeout(function(){
-        completed[1].classList.remove('turn')
-        completed[1].classList.remove('turn')
+    if (puzzleArray.length == 3) {
         completed[0].classList.remove('turn')
-        completed[0].classList.remove('turn')
-        puzzleArray = [];
-        completed = [];
-      },1000);
+        completed[1].classList.remove('turn')
+        completed[2].classList.remove('turn')
     }
-  }
-  if (puzzleArray.length == 3) {
-      completed[0].classList.remove('turn')
-      completed[1].classList.remove('turn')
-      completed[2].classList.remove('turn')
-  }
 };
 startTimer.addEventListener('click', () => {
-startTimer.classList.remove('bounce')
-function add() {
-    seconds++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
+    startTimer.style.display = "none";
+    bounce.classList.add('bounce');
+    // startTimer.classList.add('pointer-stop');
+    startTimer.classList.remove('bounce');
+    function add() {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+        }
+        time.textContent = (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+        timer();
     }
-    h2.textContent = (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    function timer() {
+        t = setTimeout(add, 1000);
+    }
     timer();
-}
-function timer() {
-    t = setTimeout(add, 1000);
-}
-timer();
-startTimer.onclick = timer;
-console.log(timer);
+    startTimer.onclick = timer;
+    console.log(timer);
 })
 //Looping through my array
 startTimer.classList.remove('bounce')
 Array.from(puzzleCard).forEach( (puzzleCard) => {
     puzzleCard.classList.add('boxShadow');
-  // Creating a clickevent for the cards and calling the callback function
-  puzzleCard.addEventListener('click', (e) => {
-    puzzleCard.classList.toggle('turn');
+    // Creating a clickevent for the cards and calling the callback function
+    puzzleCard.addEventListener('click', (e) => {
+        puzzleCard.classList.toggle('turn');
 
-    // starttimer = "true";
-	// 	timer();
-    const dataset = e.target.dataset.puzzle;
-    const puzzleTarget = puzzleArray.push(dataset);
-    completed.push(puzzleCard);
-    puzzleCard.classList.add('boxShadow');
-    console.log(e.target.dataset.puzzle);
-    return compare(e.target.dataset.puzzle);
-  })
-  //Resetting the game and shuffle the cards
-  resetGame.addEventListener('click', () => {
-    h2.textContent = "00:00:00";
-    seconds = 0; minutes = 0; hours = 0;
-    clearTimeout(t);
-    bounce.classList.remove('bounce');
-    puzzleCard.classList.remove('turn');
-    puzzleCard.classList.remove('success');
-    puzzleCard.classList.remove('boxShadow');
-    cardSuccesBox.style.display = "none";
-    // cardSuccesBox.style.display = "none";
-    for (var i = container.children.length; i >= 0; i--) {
-      container.appendChild(container.children[Math.random() * i | 0]);
-    }
-    puzzleArray = [];
-    completed = [];
-    cardSucces = 0;
-    //Shuffle the cards in a random direction when clicked on button
-    setTimeout(function() {
-      for (cards of puzzleList) {
-        let random = Math.random() * -10 * 20 + 'px';
-        let random2 = Math.random() * -30 * -80 + 'px';
-        let random3 = Math.random() * 20 * -100 + 'px';
-        let randomDeg = Math.random() * 1500 + 'deg';
-        cards.style.transition = "all 1.5s ease";
-        cards.style.transform = `translateZ(${random3, random, random2})
-        translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
-      }
-    }, 100);
-    //Moves the cards back to original position
-    setTimeout(function(){
-      for (cards of puzzleList) {
-        let random2 = Math.random() * 0 + 'px';
-        cards.style.transform = `translateY(${random2}) translateX(${random2})`;
-        cards.removeAttribute('style');
+        // starttimer = "true";
+        // 	timer();
+        const dataset = e.target.dataset.puzzle;
+        const puzzleTarget = puzzleArray.push(dataset);
+        completed.push(puzzleCard);
         puzzleCard.classList.add('boxShadow');
-        startTimer.classList.add('bounce')
-      }
-    }, 1800);
-  })
+        console.log(e.target.dataset.puzzle);
+        return compare(e.target.dataset.puzzle);
+    })
+    //Resetting the game and shuffle the cards
+    resetGame.addEventListener('click', () => {
+        highScore.style.display = "none";
+        time.textContent = "00:00";
+        seconds = 0; minutes = 0;
+        clearTimeout(t);
+        shuffle.classList.remove('shuffle');
+        bounce.classList.remove('bounce');
+        puzzleCard.classList.remove('turn');
+        puzzleCard.classList.remove('success');
+        puzzleCard.classList.remove('boxShadow');
+        cardSuccesBox.style.display = "none";
+        // cardSuccesBox.style.display = "none";
+        for (var i = container.children.length; i >= 0; i--) {
+            container.appendChild(container.children[Math.random() * i | 0]);
+        }
+        puzzleArray = [];
+        completed = [];
+        cardSucces = 0;
+        //Shuffle the cards in a random direction when clicked on button
+        setTimeout(function() {
+            for (cards of puzzleList) {
+                let random = Math.random() * -10 * 20 + 'px';
+                let random2 = Math.random() * -30 * -80 + 'px';
+                let random3 = Math.random() * 20 * -100 + 'px';
+                let randomDeg = Math.random() * 1500 + 'deg';
+                cards.style.transition = "all 1.5s ease";
+                cards.style.transform = `translateZ(${random3, random, random2})
+                translateX(${random3, random2, random}) translateY(${random3, random2, random}) rotate(${randomDeg})`;
+            }
+        }, 100);
+        //Moves the cards back to original position
+        setTimeout(function(){
+            for (cards of puzzleList) {
+                let random2 = Math.random() * 0 + 'px';
+                cards.style.transform = `translateY(${random2}) translateX(${random2})`;
+                cards.removeAttribute('style');
+                puzzleCard.classList.add('boxShadow');
+                startTimer.classList.add('bounce')
+                startTimer.style.display = "block";
+            }
+        }, 1800);
+    })
 })
-
-
-
 
 
 
